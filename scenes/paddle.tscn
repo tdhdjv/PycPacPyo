@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://by4fc41kbjvs1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37trb"]
+size = Vector2(100, 20)
+
+[node name="Paddle" type="CharacterBody2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -50.0
+offset_right = 10.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_37trb")
+one_way_collision = true

@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwnumxoirni2f"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_knujc"]
+[ext_resource type="PackedScene" uid="uid://cw8ukstegt6ev" path="res://scenes/ball.tscn" id="2_5ygwm"]
+[ext_resource type="PackedScene" uid="uid://by4fc41kbjvs1" path="res://scenes/paddle.tscn" id="3_c88lo"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="6_wp8ov"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1qmaq"]
+distance = -11.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wkbxg"]
+distance = -651.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogxia"]
+size = Vector2(124, 648)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_knujc")
+
+[node name="Ball" parent="." instance=ExtResource("2_5ygwm")]
+position = Vector2(144, 87)
+
+[node name="CPU" parent="." instance=ExtResource("3_c88lo")]
+position = Vector2(1125, 142)
+rotation = 3.14159
+script = ExtResource("6_wp8ov")
+
+[node name="Player" parent="." instance=ExtResource("3_c88lo")]
+position = Vector2(30, 53)
+script = ExtResource("6_wp8ov")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+z_as_relative = false
+offset_right = 1154.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 1)
+
+[node name="Top Boarder" type="StaticBody2D" parent="."]
+
+[node name="Collision Shape" type="CollisionShape2D" parent="Top Boarder"]
+position = Vector2(7, 11)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_1qmaq")
+
+[node name="Bottom Boarder" type="StaticBody2D" parent="."]
+
+[node name="Collision Shape" type="CollisionShape2D" parent="Bottom Boarder"]
+position = Vector2(0, -2)
+shape = SubResource("WorldBoundaryShape2D_wkbxg")
+
+[node name="Player Goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Goal"]
+position = Vector2(-62, 324)
+shape = SubResource("RectangleShape2D_ogxia")
+
+[node name="CPU Goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CPU Goal"]
+position = Vector2(1215, 327)
+shape = SubResource("RectangleShape2D_ogxia")
+
+[connection signal="body_entered" from="Player Goal" to="." method="_on_player_goal_body_entered"]
+[connection signal="body_entered" from="CPU Goal" to="." method="_on_cpu_goal_body_entered"]
