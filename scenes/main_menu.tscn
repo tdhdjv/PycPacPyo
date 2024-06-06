@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2kdph8deaf8d"]
+
+[ext_resource type="FontFile" uid="uid://buocggktmgarq" path="res://assets/Pixel Font.ttf" id="1_ti6t3"]
+[ext_resource type="Script" path="res://scripts/states/menu_state.gd" id="1_y52qv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpbam"]
+bg_color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkked"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5i2d"]
+bg_color = Color(0.710474, 0.718519, 0.716535, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkyvj"]
+bg_color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_y52qv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 318.0
+offset_right = 906.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("1_ti6t3")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_cpbam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pkked")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s5i2d")
+text = "PLAY"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 419.0
+offset_top = 133.0
+offset_right = 682.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("1_ti6t3")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_dkyvj")
+placeholder_text = "3"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

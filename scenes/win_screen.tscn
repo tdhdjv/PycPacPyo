@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cawffyed671gx"]
+
+[ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_ccyl2"]
+[ext_resource type="FontFile" uid="uid://buocggktmgarq" path="res://assets/Pixel Font.ttf" id="2_8mpk7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rv5t"]
+bg_color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e481l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bk1f"]
+bg_color = Color(0.710474, 0.718519, 0.716535, 1)
+
+[node name="Win Screen" type="Node2D"]
+script = ExtResource("1_ccyl2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1160.0
+offset_bottom = 671.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 177.0
+offset_top = 182.0
+offset_right = 1927.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_8mpk7")
+theme_override_font_sizes/font_size = 64
+text = "PLAYER WINS!!!"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 318.0
+offset_right = 906.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("2_8mpk7")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_7rv5t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e481l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8bk1f")
+text = "RETURN"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
